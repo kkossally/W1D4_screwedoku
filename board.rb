@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "tile"
 
 class Board
@@ -15,11 +16,10 @@ class Board
       nums = row.split("").map { |char| Integer(char) }
       nums.map { |num| Tile.new(num) }
     end
-
     self.new(tiles)
   end
 
-  def initialize(grid = self.empty_grid)
+  def initialize(grid = Board.empty_grid)
     @grid = grid
   end
 
@@ -50,11 +50,11 @@ class Board
     grid.size
   end
 
-  alias_method :rows, :size
+  alias_method :rows, :grid
 
   def solved?
     rows.all? { |row| solved_set?(row) } &&
-      columns.all? { |col| solved_set?(col) } &&
+        columns.all? { |col| solved_set?(col) } &&
       squares.all? { |square| solved_set?(square) }
   end
 
