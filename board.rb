@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "tile"
 
 class Board
@@ -81,5 +82,5 @@ class Board
   end
 
   private
-  attr_reader :grid
+  attr_accessor :grid
 end
